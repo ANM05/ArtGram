@@ -18,12 +18,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         ImageView fullscreenImgView=(ImageView)findViewById(R.id.imgFullScreen);
 
-        Intent callIntent=getIntent();
-        if(callIntent !=null){
-            Uri imageUri=callIntent.getData();
-            if(imageUri !=null && fullscreenImgView !=null){
-                Glide.with(this).load(imageUri).into(fullscreenImgView);
-            }
-        }
+        Intent intent=new Intent();
+        fullscreenImgView.setImageResource(intent.getIntExtra("images", 0));
+
     }
 }
