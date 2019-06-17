@@ -1,6 +1,9 @@
 package com.example.artgram;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
         MainAdapter mainAdapter = new MainAdapter(this, description, mImages);
         mList.setAdapter(mainAdapter);
 
-        mList.setOnItemClickListener(((parent, view, position, id) -> {
-
-        }));
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getApplicationContext(), DetailsActivity.class);
+                intent.putExtra("images", mImages[position]);
+            }
+        });
     }
 }
