@@ -9,14 +9,18 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailsActivity extends AppCompatActivity {
+    @BindView(R.id.imgFullScreen) ImageView fullscreenImgView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        ButterKnife.bind(this);
 
-        ImageView fullscreenImgView=(ImageView)findViewById(R.id.imgFullScreen);
 
         Intent intent=new Intent();
         fullscreenImgView.setImageResource(intent.getIntExtra("images", 0));
