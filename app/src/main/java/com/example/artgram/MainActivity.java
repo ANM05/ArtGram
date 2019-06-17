@@ -33,5 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
         MainAdapter mainAdapter = new MainAdapter(this, description, mImages);
         mList.setAdapter(mainAdapter);
+
+        mList.setOnItemClickListener(((parent, view, position, id) -> {
+
+        }));
     }
 }
