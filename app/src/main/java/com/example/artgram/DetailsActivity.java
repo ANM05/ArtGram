@@ -22,7 +22,7 @@ public class DetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        Intent intent=new Intent();
+        Intent intent=getIntent();
         fullscreenImgView.setImageResource(intent.getIntExtra("images", 0));
 
     }
