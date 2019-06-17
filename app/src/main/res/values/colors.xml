@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="themeColour">#ED7633</color>
     <color name="back_color">#fafafa</color>
+    <color name="p_dark">#000a12</color>
 </resources>
