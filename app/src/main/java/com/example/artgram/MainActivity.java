@@ -2,12 +2,16 @@ package com.example.artgram;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.img_list)
     ListView mList;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     int[] mImages= {
             R.drawable.img1,
@@ -38,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
         MainAdapter mainAdapter = new MainAdapter(this, description, mImages);
         mList.setAdapter(mainAdapter);
 
@@ -50,4 +60,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else {
+            super.onBackPressed();
+        }
+    }
 }
+
