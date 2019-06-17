@@ -1,12 +1,17 @@
 package com.example.artgram;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-
+    @BindView(R.id.img_list)
+    ListView mList;
 
     int[] mImages= {
             R.drawable.img1,
@@ -24,5 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
+        MainAdapter mainAdapter = new MainAdapter(this, description, mImages);
+        mList.setAdapter(mainAdapter);
     }
 }
