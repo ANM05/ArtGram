@@ -92,7 +92,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view){
         if(view==mBtnLogin){
+            String email=mLoginEmail.getText().toString();
             Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("email", email);
             startActivity(intent);
         }
     }

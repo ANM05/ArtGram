@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     ListView mList;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+//    @BindView(R.id.disp_email)
+//    TextView mEmail;
 
     int[] mImages= {
             R.drawable.img1,
@@ -59,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        Intent intent=getIntent();
+//        String email=intent.getStringExtra("email");
+//        mEmail.setText(email);
     }
 
     @Override
