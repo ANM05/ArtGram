@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -24,6 +26,13 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         fullscreenImgView.setImageResource(intent.getIntExtra("images", 0));
+
+        fullscreenImgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DetailsActivity.this, "Show photo details", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 }
