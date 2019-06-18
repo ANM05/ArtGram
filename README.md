@@ -1,6 +1,6 @@
 # ArtGram
 
-ArtGram is an android photo sharing app for photographers and artists where a user can sign-up, login share like or upload their own photo.
+ArtGram is an android photo sharing app for photographers and artists where a user can sign-up, login, share, like or upload their own photo.
 
 ## Technologies and frameworks used
 
