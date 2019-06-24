@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -101,12 +102,21 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call,  Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mPhotos=flickrService.processResults(response);
+
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] photosTitle=new String[mPhotos.size()];
+                        for(int i=0; i<photosTitle.length; i++){
+                            photosTitle[i]=mPhotos.get(i).getTitle();
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this,
+                                android.R.layout.simple_list_item_1, photosTitle);
+                        mList.setAdapter(adapter);
+                    }
+                });
             }
         });
     }
