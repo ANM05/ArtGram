@@ -38,20 +38,7 @@ public class MainActivity extends AppCompatActivity {
     ListView mList;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-//    @BindView(R.id.disp_email)
-//    TextView mEmail;
 
-    int[] mImages= {
-            R.drawable.img1,
-            R.drawable.img2,
-            R.drawable.img3,
-            R.drawable.img4,
-            R.drawable.img5,
-            R.drawable.img6,
-            R.drawable.img7,
-            R.drawable.img8
-    };
-    String[] description={"Born A Crime","Wisdom of Insecurity", "Decolonizing the Mind", "My Adventures As An Illustrator","Born A Crime","Wisdom of Insecurity", "Decolonizing the Mind", "My Adventures As An Illustrator"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,21 +53,16 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        MainAdapter mainAdapter = new MainAdapter(this, description, mImages);
-        mList.setAdapter(mainAdapter);
+        getPhotos();
 
-        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getApplicationContext(), DetailsActivity.class);
-                intent.putExtra("images", mImages[position]);
-                startActivity(intent);
-            }
-        });
-
-//        Intent intent=getIntent();
-//        String email=intent.getStringExtra("email");
-//        mEmail.setText(email);
+//        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent=new Intent(getApplicationContext(), DetailsActivity.class);
+////                intent.putExtra("images", mImages[position]);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -102,21 +84,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call,  Response response) throws IOException {
-                mPhotos=flickrService.processResults(response);
-
-                MainActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String[] photosTitle=new String[mPhotos.size()];
-                        for(int i=0; i<photosTitle.length; i++){
-                            photosTitle[i]=mPhotos.get(i).getTitle();
-                        }
-
-                        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this,
-                                android.R.layout.simple_list_item_1, photosTitle);
-                        mList.setAdapter(adapter);
+                try {
+                    String jsonData = response.body().string();
+                    if (response.isSuccessful()) {
+                        Log.v(TAG, jsonData);
+                        mPhotos = flickrService.processResults(response);
                     }
-                });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
