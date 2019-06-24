@@ -15,11 +15,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.FlickrService;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +31,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG= MainActivity.class.getSimpleName();
+    public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
 
     @BindView(R.id.img_list)
     ListView mList;
