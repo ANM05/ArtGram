@@ -39,12 +39,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
     public ArrayList<RecentPhotos> dataset = new ArrayList<>();
-    private RecyclerView recycler;
+    RecyclerView recycler;
 
-    private PhotosAdapter photosAdapter;
+    PhotosAdapter photosAdapter;
 
-    @BindView(R.id.img_list)
-    ListView mList;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
