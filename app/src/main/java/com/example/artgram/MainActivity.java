@@ -16,7 +16,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.artgram.adapters.PhotosAdapter;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.FlickrService;
 
@@ -36,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
-    RecyclerView recycler;
-    List<RecentPhotos> dataset;
+    public ArrayList<RecentPhotos> dataset = new ArrayList<>();
+    private RecyclerView recycler;
+
+    private PhotosAdapter photosAdapter;
 
     @BindView(R.id.img_list)
     ListView mList;
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViewById(R.id.mainRecycler);
         ButterKnife.bind(this);
-        dataset=new ArrayList<>();
+
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,12 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] photoTitle=new String[mPhotos.size()];
-                        for(int i=0; i<photoTitle.length; i++){
-                            photoTitle[i]=mPhotos.get(i).getmTitle();
-                        }
-                        ArrayAdapter adapter=new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, photoTitle);
-                        mList.setAdapter(adapter);
+                        photosAdapter = new PhotosAdapter(getApplicationContext(), dataset);
+                        recycler.setAdapter(photosAdapter);
+                        recycler.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
+
                     }
                 });
             }
