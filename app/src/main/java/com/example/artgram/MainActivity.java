@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.FlickrService;
@@ -23,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
+    RecyclerView recycler;
+    List<RecentPhotos> dataset;
 
     @BindView(R.id.img_list)
     ListView mList;
@@ -45,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.mainRecycler);
         ButterKnife.bind(this);
+        dataset=new ArrayList<>();
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
