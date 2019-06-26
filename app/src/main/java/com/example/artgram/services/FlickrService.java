@@ -1,5 +1,7 @@
 package com.example.artgram.services;
 
+import android.util.Log;
+
 import com.example.artgram.models.RecentPhotos;
 
 import org.json.JSONArray;
@@ -25,6 +27,9 @@ public class FlickrService {
         HttpUrl.Builder urlBuilder=HttpUrl.parse(Constants.BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("api_key", Constants.FLICKR_KEY);
         urlBuilder.addQueryParameter("format", Constants.FORMART);
+        urlBuilder.addQueryParameter("nojsoncallback", Constants.CALLBACK);
+        urlBuilder.addQueryParameter("text", Constants.TEXT);
+        urlBuilder.addQueryParameter("extras", Constants.EXTRAS);
         String url=urlBuilder.build().toString();
 
         System.out.println(url);
@@ -35,29 +40,41 @@ public class FlickrService {
     }
 
     public ArrayList<RecentPhotos> processResults(Response response){
-        ArrayList<RecentPhotos> photos=new ArrayList<RecentPhotos>();
+        ArrayList<RecentPhotos> recentPhotos=new ArrayList<RecentPhotos>();
         try{
-            String jsonData=response.body().toString();
+            String jsonData=response.body().string();
             JSONObject flickrJson=new JSONObject(jsonData);
-            JSONArray photosJSON = flickrJson.getJSONArray("photo");
+            JSONObject photosJSON = flickrJson.getJSONObject("photos");
             if(response.isSuccessful()){
-                for(int index=0; index<photosJSON.length(); index++){
-                    JSONObject photoJson=photosJSON.getJSONObject(index);
+                JSONArray photosJsonArray =photosJSON.getJSONArray("photo");
+                for(int index=0; index<photosJsonArray.length(); index++){
+                    JSONObject photoJson=photosJsonArray.getJSONObject(index);
+                    String id=photoJson.getString("id");
+                    String owner=photoJson.getString("owner");
+                    String secret=photoJson.getString("secret");
+                    String server=photoJson.getString("server");
+                    int farm=photoJson.getInt("farm");
                     String title=photoJson.getString("title");
-                    String imageId=photoJson.getString("id");
-                    String ownerId=photoJson.getString("owner");
+                    int isPublic=photoJson.getInt("ispublic");
+                    int friend=photoJson.getInt("isfriend");
+                    int family=photoJson.getInt("isfamily");
+                    String imageUrl=photoJson.optString("url_n");
+                    int height=photoJson.getInt("height_n");
+                    int width=photoJson.getInt("width_n");
 
-                    RecentPhotos photo=new RecentPhotos(title, imageId, ownerId);
-                    photos.add(photo);
+                    RecentPhotos photo=new RecentPhotos(id, owner, secret, server, farm, title, isPublic, friend, family, imageUrl, height, width);
+                    recentPhotos.add(photo);
                 }
             }
+
+
         }
-//        catch (IOException e){
-//            e.printStackTrace();
-//        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
         catch (JSONException e){
             e.printStackTrace();
         }
-    return photos;
+    return recentPhotos;
     }
 }

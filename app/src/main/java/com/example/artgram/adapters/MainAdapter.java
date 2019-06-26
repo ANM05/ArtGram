@@ -1,4 +1,4 @@
-package com.example.artgram;
+package com.example.artgram.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.artgram.R;
 
 public class MainAdapter extends ArrayAdapter<String> {
     private Context mContext;

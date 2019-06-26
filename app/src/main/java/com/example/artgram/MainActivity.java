@@ -31,6 +31,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
 
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getPhotos(){
         final FlickrService flickrService=new FlickrService();
+
         flickrService.getRecentPhotos(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -84,15 +86,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call,  Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    if (response.isSuccessful()) {
-                        Log.v(TAG, jsonData);
-                        mPhotos = flickrService.processResults(response);
+                mPhotos=flickrService.processResults(response);
+
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] photoTitle=new String[mPhotos.size()];
+                        for(int i=0; i<photoTitle.length; i++){
+                            photoTitle[i]=mPhotos.get(i).getmTitle();
+                        }
+                        ArrayAdapter adapter=new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, photoTitle);
+                        mList.setAdapter(adapter);
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                });
             }
         });
     }
