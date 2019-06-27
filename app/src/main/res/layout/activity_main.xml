@@ -9,7 +9,7 @@
     tools:context=".MainActivity"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -23,7 +23,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,9 +36,9 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-        </FrameLayout>
+        </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"

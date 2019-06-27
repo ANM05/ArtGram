@@ -38,13 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
-    public ArrayList<RecentPhotos> dataset = new ArrayList<>();
-    RecyclerView recycler;
-
-    PhotosAdapter photosAdapter;
+    public PhotosAdapter photosAdapter;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.mainRecycler)
+    RecyclerView recycler;
 
 
     @Override
@@ -62,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        getPhotos();
+//        getPhotos();
+        photosAdapter =new PhotosAdapter(this, mPhotos);
+        recycler.setAdapter(photosAdapter);
+        recycler.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
+        photosAdapter.notifyDataSetChanged();
 
 //        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -99,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        photosAdapter = new PhotosAdapter(getApplicationContext(), dataset);
-                        recycler.setAdapter(photosAdapter);
-                        recycler.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
 
                     }
                 });

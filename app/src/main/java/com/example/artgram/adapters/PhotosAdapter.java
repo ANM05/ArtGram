@@ -16,16 +16,17 @@ import com.example.artgram.R;
 import com.example.artgram.models.RecentPhotos;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder> {
-    private Context mContext;
-    private List<RecentPhotos> mPhotos;
+    public Context mContext;
+    private List<RecentPhotos> mPhotos=new ArrayList<>();
 
-    public PhotosAdapter(Context context, List<RecentPhotos> photos){
+    public PhotosAdapter(Context context, ArrayList<RecentPhotos> photos){
         this.mContext=context;
         this.mPhotos=photos;
     }
@@ -57,7 +58,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
         public PhotosViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-//            mContext=itemView.getContext();
+           mContext=itemView.getContext();
         }
     }
 

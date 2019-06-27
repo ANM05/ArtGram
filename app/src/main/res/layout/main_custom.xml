@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true">
+    android:layout_centerVertical="true"
+    app:cardCornerRadius="3dp"
+    >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/back_color">
 
         <ImageView
             android:id="@+id/imageOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/img2"
             />
 
         <TextView
@@ -24,7 +28,9 @@
             android:layout_height="wrap_content"
             android:paddingBottom="3dp"
             android:paddingLeft="3dp"
-            android:paddingRight="3dp"/>
+            android:paddingRight="3dp"
+            android:text="Here is the photo title"
+            />
 
 
     </LinearLayout>
