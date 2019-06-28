@@ -60,6 +60,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
         }
 
         public void bindRecentPhotos(RecentPhotos recentPhotos){
+            Picasso.get().load(recentPhotos.getmImageUrl()).into(photo);
             title.setText(recentPhotos.getmTitle());
         }
     }

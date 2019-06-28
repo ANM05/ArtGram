@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         mAdapter = new PhotosAdapter(getApplicationContext(), mPhotos);
                         mRecycler.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
-                                new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+                                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                         mRecycler.setLayoutManager(layoutManager);
                         mRecycler.setHasFixedSize(true);
 
