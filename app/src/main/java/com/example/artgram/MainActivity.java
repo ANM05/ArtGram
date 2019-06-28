@@ -15,10 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.example.artgram.adapters.PhotosAdapter;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.FlickrService;
 
@@ -26,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,21 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
-    public PhotosAdapter photosAdapter;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-    @BindView(R.id.mainRecycler)
-    RecyclerView recycler;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.mainRecycler);
         ButterKnife.bind(this);
-
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-//        getPhotos();
-        photosAdapter =new PhotosAdapter(this, mPhotos);
-        recycler.setAdapter(photosAdapter);
-        recycler.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
-        photosAdapter.notifyDataSetChanged();
+        getPhotos();
 
 //        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
