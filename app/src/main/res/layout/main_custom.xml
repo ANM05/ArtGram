@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    app:cardCornerRadius="3dp"
+    >
 
-
-    <ImageView
-        android:id="@+id/img_main"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        app:srcCompat="@drawable/img1" />
-
-    <TextView
-        android:id="@+id/img_text"
-        android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Photo description" />
-</LinearLayout>
+        android:background="@color/back_color">
+
+        <ImageView
+            android:id="@+id/imageOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img2"
+            />
+
+        <TextView
+            android:id="@+id/photoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="3dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="Here is the photo title"
+            />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
