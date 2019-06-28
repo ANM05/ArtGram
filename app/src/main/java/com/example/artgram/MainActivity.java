@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG= MainActivity.class.getSimpleName();
     public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
 
-    @BindView(R.id.img_list)
-    ListView mList;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
@@ -91,14 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String[] photoTitle=new String[mPhotos.size()];
-                        for(int i=0; i<photoTitle.length; i++){
-                            photoTitle[i]=mPhotos.get(i).getmTitle();
-                            RecentPhotos photo=mPhotos.get(i);
 
-                        }
-                        ArrayAdapter adapter=new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, photoTitle);
-                        mList.setAdapter(adapter);
                     }
                 });
             }
