@@ -15,7 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.artgram.adapters.PhotosAdapter;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.FlickrService;
 
@@ -33,10 +36,14 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= MainActivity.class.getSimpleName();
-    public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
-
+    @BindView(R.id.mainRecycler)
+    RecyclerView mRecycler;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
+    private PhotosAdapter mAdapter;
+
 
 
     @Override
@@ -47,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -89,6 +95,12 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        mAdapter = new PhotosAdapter(getApplicationContext(), mPhotos);
+                        mRecycler.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager =
+                                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                        mRecycler.setLayoutManager(layoutManager);
+                        mRecycler.setHasFixedSize(true);
 
                     }
                 });
