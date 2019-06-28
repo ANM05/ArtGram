@@ -23,27 +23,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder> {
-    public Context mContext;
-    private List<RecentPhotos> mPhotos=new ArrayList<>();
+    private Context mContext;
+    private ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
 
     public PhotosAdapter(Context context, ArrayList<RecentPhotos> photos){
         this.mContext=context;
         this.mPhotos=photos;
     }
 
-    @NonNull
     @Override
-    public PhotosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PhotosAdapter.PhotosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_custom, parent, false);
-        return new PhotosViewHolder(view);
+        PhotosViewHolder viewHolder=new PhotosViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PhotosViewHolder holder, int position) {
-        RecentPhotos photo=mPhotos.get(position);
-        Picasso.get().load(photo.getmImageUrl()).into(holder.photo);
-        holder.title.setText(photo.getmTitle());
-
+    public void onBindViewHolder(PhotosAdapter.PhotosViewHolder holder, int position) {
+        holder.bindRecentPhotos(mPhotos.get(position));
     }
 
     @Override
@@ -54,11 +51,16 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
     public class PhotosViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imageOne) ImageView photo;
         @BindView(R.id.photoTitle) TextView title;
+        private Context mContext;
 
-        public PhotosViewHolder(@NonNull View itemView) {
+        public PhotosViewHolder(View itemView){
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext=itemView.getContext();
+        }
+
+        public void bindRecentPhotos(RecentPhotos recentPhotos){
+            title.setText(recentPhotos.getmTitle());
         }
     }
 
