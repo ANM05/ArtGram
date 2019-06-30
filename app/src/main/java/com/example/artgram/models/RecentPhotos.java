@@ -1,5 +1,9 @@
 package com.example.artgram.models;
 
+import org.parceler.Parcel;
+
+@Parcel
+
 public class RecentPhotos {
 
     private String mId;
@@ -14,6 +18,8 @@ public class RecentPhotos {
     private String mImageUrl;
     private int height;
     private int width;
+
+    public RecentPhotos(){}
 
     public RecentPhotos(String mId, String mOwnerId, String mSecret, String mServer, int farm, String mTitle, int mPublic, int mFriend, int mFamily, String mImageUrl, int height, int width) {
         this.mId = mId;

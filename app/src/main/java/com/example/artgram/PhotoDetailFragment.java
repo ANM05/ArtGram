@@ -8,6 +8,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.artgram.models.RecentPhotos;
+import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -15,17 +25,42 @@ import android.view.ViewGroup;
  */
 public class PhotoDetailFragment extends Fragment {
 
+    @BindView(R.id.descriptionImageView)
+    ImageView mphotoImageView;
+    @BindView(R.id.photoDescription)
+    TextView mPhotoDescription;
+
+    private RecentPhotos mRecentPhotos;
 
     public PhotoDetailFragment() {
         // Required empty public constructor
     }
 
+    public PhotoDetailFragment newInstance(RecentPhotos recentPhotos){
+        PhotoDetailFragment detailFragment=new PhotoDetailFragment();
+        Bundle args=new Bundle();
+        args.putParcelable("recentPhotos", Parcels.wrap(recentPhotos));
+        detailFragment.setArguments(args);
+        return detailFragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mRecentPhotos = Parcels.unwrap(getArguments().getParcelable("recentPhotos"));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_photo_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_photo_detail, container, false);
+        ButterKnife.bind(this, view);
+
+        Picasso.get().load(mRecentPhotos.getmImageUrl()).into(mphotoImageView);
+        mPhotoDescription.setText(mRecentPhotos.getmTitle());
+
+        return view;
     }
 
 }
