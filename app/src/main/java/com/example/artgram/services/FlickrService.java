@@ -26,9 +26,10 @@ public class FlickrService {
 
         HttpUrl.Builder urlBuilder=HttpUrl.parse(Constants.BASE_URL).newBuilder();
         urlBuilder.addQueryParameter("api_key", Constants.FLICKR_KEY);
+        urlBuilder.addQueryParameter("text", Constants.SEARCH);
         urlBuilder.addQueryParameter("format", Constants.FORMART);
         urlBuilder.addQueryParameter("nojsoncallback", Constants.CALLBACK);
-        urlBuilder.addQueryParameter("text", Constants.TEXT);
+//        urlBuilder.addQueryParameter("text", Constants.TEXT);
         urlBuilder.addQueryParameter("extras", Constants.EXTRAS);
         String url=urlBuilder.build().toString();
 
