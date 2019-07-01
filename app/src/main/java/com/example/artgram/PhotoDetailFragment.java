@@ -36,7 +36,7 @@ public class PhotoDetailFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public PhotoDetailFragment newInstance(RecentPhotos recentPhotos){
+    public static PhotoDetailFragment newInstance(RecentPhotos recentPhotos){
         PhotoDetailFragment detailFragment=new PhotoDetailFragment();
         Bundle args=new Bundle();
         args.putParcelable("recentPhotos", Parcels.wrap(recentPhotos));
