@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "444217602979",
+    "firebase_url": "https://artgram-8ab40.firebaseio.com",
+    "project_id": "artgram-8ab40",
+    "storage_bucket": "artgram-8ab40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444217602979:android:df8537cc0f1c0682",
+        "android_client_info": {
+          "package_name": "com.example.artgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444217602979-29318ccj9kfmphp0n5a4vtf0qp3573k8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.artgram",
+            "certificate_hash": "2af7f5be97a1f84d954d8575269e138efe119a74"
+          }
+        },
+        {
+          "client_id": "444217602979-88fvbnmjdesllme39gre2d1nm052r4g2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsDBV0qiRGc3pSiGx9WfnTuAJdWO4uX4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444217602979-88fvbnmjdesllme39gre2d1nm052r4g2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

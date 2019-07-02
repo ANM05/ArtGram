@@ -1,4 +1,4 @@
-package com.example.artgram;
+package com.example.artgram.fragments;
 
 
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.artgram.R;
 import com.example.artgram.models.RecentPhotos;
 import com.squareup.picasso.Picasso;
 
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PhotoDetailFragment extends Fragment {
+public class PhotoDetailFragment extends Fragment implements View.OnClickListener{
 
     @BindView(R.id.descriptionImageView)
     ImageView mphotoImageView;
@@ -63,4 +64,8 @@ public class PhotoDetailFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        
+    }
 }

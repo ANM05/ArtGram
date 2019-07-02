@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         mAdapter = new PhotosAdapter(getApplicationContext(), mPhotos);
                         mRecycler.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
-                                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                                new GridLayoutManager(getApplicationContext(),2);
                         mRecycler.setLayoutManager(layoutManager);
                         mRecycler.setHasFixedSize(true);
 
