@@ -33,7 +33,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'FLICKR_KEY', api_key
+        it.buildConfigField 'String', 'UNSPLASH_KEY', client_id
     }
 }
 

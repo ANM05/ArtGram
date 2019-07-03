@@ -1,4 +1,4 @@
-package com.example.artgram;
+package com.example.artgram.ui;
 
 
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.artgram.R;
 
 import java.util.regex.Pattern;
 

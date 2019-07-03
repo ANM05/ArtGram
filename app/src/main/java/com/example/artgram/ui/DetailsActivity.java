@@ -1,4 +1,4 @@
-package com.example.artgram;
+package com.example.artgram.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.artgram.R;
 import com.example.artgram.adapters.PhotosPagerAdapter;
 import com.example.artgram.models.RecentPhotos;
 

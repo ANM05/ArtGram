@@ -1,14 +1,6 @@
-package com.example.artgram;
+package com.example.artgram.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,13 +9,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.artgram.R;
 import com.example.artgram.adapters.PhotosAdapter;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.FlickrService;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,15 +50,6 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         getPhotos();
-
-//        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent=new Intent(getApplicationContext(), DetailsActivity.class);
-////                intent.putExtra("images", mImages[position]);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     @Override

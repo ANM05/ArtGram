@@ -1,10 +1,13 @@
-package com.example.artgram;
+package com.example.artgram.ui;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.artgram.R;
+import com.example.artgram.ui.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
         mRunnable=new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         };
         mHandler=new Handler();

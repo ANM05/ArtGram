@@ -12,24 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".DetailsActivity">
+        <activity android:name=".ui.DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.artgram.MainActivity">
+                android:value="com.example.artgram.ui.MainActivity">
             </meta-data>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:theme="@style/SplashTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.artgram.LoginActivity">
+                android:value="com.example.artgram.ui.LoginActivity">
             </meta-data>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:theme="@style/SplashTheme" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

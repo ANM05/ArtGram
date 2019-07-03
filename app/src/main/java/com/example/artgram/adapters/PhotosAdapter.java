@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.artgram.DetailsActivity;
+import com.example.artgram.ui.DetailsActivity;
 import com.example.artgram.R;
 import com.example.artgram.models.RecentPhotos;
 import com.squareup.picasso.Picasso;
@@ -21,7 +18,6 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
