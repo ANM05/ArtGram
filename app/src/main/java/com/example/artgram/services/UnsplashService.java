@@ -51,7 +51,7 @@ public class UnsplashService {
                     String createdAt=photoJson.getString("created_at");
                     String updatedAt=photoJson.getString("updated_at");
                     String color=photoJson.getString("color");
-                    String description=photoJson.getString("description");
+                    String description=photoJson.optString("description", "Description not available");
                     String imageUrl=photoJson.getJSONObject("urls").getString("regular");
                     String downloadUrl=photoJson.getJSONObject("links").getString("download");
                     String userName=photoJson.getJSONObject("user").getString("username");
