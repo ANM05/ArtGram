@@ -44,6 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mBtnLogin.setOnClickListener(this);
         Intent intent=getIntent();
+
+//        confirmInput(View v);
     }
 
     private boolean validateEmail() {
