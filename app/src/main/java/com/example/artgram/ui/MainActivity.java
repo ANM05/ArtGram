@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artgram.R;
-import com.example.artgram.adapters.PhotosAdapter;
-import com.example.artgram.models.RecentPhotos;
-import com.example.artgram.services.FlickrService;
+
+import com.example.artgram.services.UnsplashService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
-    private PhotosAdapter mAdapter;
+//    public ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
+//    private PhotosAdapter mAdapter;
 
 
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getPhotos(){
-        final FlickrService flickrService=new FlickrService();
+        final UnsplashService flickrService=new UnsplashService();
 
         flickrService.getRecentPhotos(new Callback() {
             @Override
@@ -72,20 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call,  Response response) throws IOException {
-                mPhotos=flickrService.processResults(response);
-
-                MainActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter = new PhotosAdapter(getApplicationContext(), mPhotos);
-                        mRecycler.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager =
-                                new GridLayoutManager(getApplicationContext(),2);
-                        mRecycler.setLayoutManager(layoutManager);
-                        mRecycler.setHasFixedSize(true);
-
-                    }
-                });
+//                mPhotos=flickrService.processResults(response);
+//
+//                MainActivity.this.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mAdapter = new PhotosAdapter(getApplicationContext(), mPhotos);
+//                        mRecycler.setAdapter(mAdapter);
+//                        RecyclerView.LayoutManager layoutManager =
+//                                new GridLayoutManager(getApplicationContext(),2);
+//                        mRecycler.setLayoutManager(layoutManager);
+//                        mRecycler.setHasFixedSize(true);
+//
+//                    }
+//                });
             }
         });
     }

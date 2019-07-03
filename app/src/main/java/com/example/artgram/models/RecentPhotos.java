@@ -6,81 +6,99 @@ import org.parceler.Parcel;
 
 public class RecentPhotos {
 
-    private String mId;
-    private String mOwnerId;
-    private String mSecret;
-    private String mServer;
-    private int farm;
-    private String mTitle;
-    private int mPublic;
-    private int mFriend;
-    private int mFamily;
-    private String mImageUrl;
-    private int height;
-    private int width;
+    private String id;
+    private String createdAt;
+    private String updatedAt;
+    private String color;
+    private String description;
+    private String imageUrl;
+    private String downloadUrl;
+    private String userName;
+    private String name;
+    private String portfolioUrl;
+    private String bio;
+    private String location;
+    private String profileImageUrl;
+    private Double totalLikes;
+    private Double totalPhotos;
 
     public RecentPhotos(){}
 
-    public RecentPhotos(String mId, String mOwnerId, String mSecret, String mServer, int farm, String mTitle, int mPublic, int mFriend, int mFamily, String mImageUrl, int height, int width) {
-        this.mId = mId;
-        this.mOwnerId = mOwnerId;
-        this.mSecret = mSecret;
-        this.mServer = mServer;
-        this.farm = farm;
-        this.mTitle = mTitle;
-        this.mPublic = mPublic;
-        this.mFriend = mFriend;
-        this.mFamily = mFamily;
-        this.mImageUrl = mImageUrl;
-        this.height = height;
-        this.width = width;
+    public RecentPhotos(String id, String createdAt, String updatedAt, String color, String description, String imageUrl, String downloadUrl, String userName, String name, String portfolioUrl, String bio, String location, String profileImageUrl, Double totalLikes, Double totalPhotos) {
+        this.id = id;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.color = color;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.downloadUrl = downloadUrl;
+        this.userName = userName;
+        this.name = name;
+        this.portfolioUrl = portfolioUrl;
+        this.bio = bio;
+        this.location = location;
+        this.profileImageUrl = profileImageUrl;
+        this.totalLikes = totalLikes;
+        this.totalPhotos = totalPhotos;
     }
 
-    public String getmId() {
-        return mId;
+    public String getId() {
+        return id;
     }
 
-    public String getmOwnerId() {
-        return mOwnerId;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public String getmSecret() {
-        return mSecret;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public String getmServer() {
-        return mServer;
+    public String getColor() {
+        return color;
     }
 
-    public int getFarm() {
-        return farm;
+    public String getDescription() {
+        return description;
     }
 
-    public String getmTitle() {
-        return mTitle;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public int getmPublic() {
-        return mPublic;
+    public String getDownloadUrl() {
+        return downloadUrl;
     }
 
-    public int getmFriend() {
-        return mFriend;
+    public String getUserName() {
+        return userName;
     }
 
-    public int getmFamily() {
-        return mFamily;
+    public String getName() {
+        return name;
     }
 
-    public String getmImageUrl() {
-        return mImageUrl;
+    public String getPortfolioUrl() {
+        return portfolioUrl;
     }
 
-    public int getHeight() {
-        return height;
+    public String getBio() {
+        return bio;
     }
 
-    public int getWidth() {
-        return width;
+    public String getLocation() {
+        return location;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public Double getTotalLikes() {
+        return totalLikes;
+    }
+
+    public Double getTotalPhotos() {
+        return totalPhotos;
     }
 }
