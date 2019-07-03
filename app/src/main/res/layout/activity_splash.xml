@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@color/back_color">
+    android:background="@drawable/artBack">
 
     <ImageView
         android:id="@+id/splashId"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/themeicon"
         android:layout_centerInParent="true"
