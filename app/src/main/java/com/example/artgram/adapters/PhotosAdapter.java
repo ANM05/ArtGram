@@ -51,10 +51,10 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
     }
 
     public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.imageOne) ImageView photo;
-        @BindView(R.id.photoTitle) TextView title;
+        @BindView(R.id.imgMain) ImageView photo;
+        @BindView(R.id.photoCreatedAt) TextView title;
 
-        private Context mContext;
+        Context mContext;
 
         public PhotosViewHolder(View itemView){
             super(itemView);

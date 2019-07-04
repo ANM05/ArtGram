@@ -1,16 +1,24 @@
 package com.example.artgram.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.parceler.Parcel;
 
 @Parcel
 
 public class RecentPhotos {
 
+    @SerializedName("id")
     private String id;
+    @SerializedName("created_at")
     private String createdAt;
+    @SerializedName("updated_at")
     private String updatedAt;
+    @SerializedName("color")
     private String color;
+    @SerializedName("description")
     private String description;
+
     private String imageUrl;
     private String downloadUrl;
     private String userName;
