@@ -9,17 +9,17 @@
             android:icon="@drawable/ic_explore"
             android:title="Explore" />
         <item
-            android:id="@+id/nav_upload"
-            android:icon="@drawable/ic_file_upload"
-            android:title="Upload" />
+            android:id="@+id/nav_collections"
+            android:icon="@drawable/ic_collections_black_24dp"
+            android:title="Collections" />
     </group>
 
-    <item android:title="Social">
+    <item android:title="Favourites">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_share"
-                android:title="Share" />
+                android:id="@+id/nav_favourite"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="Favourites" />
         </menu>
     </item>
 </menu>

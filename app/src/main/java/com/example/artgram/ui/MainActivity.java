@@ -1,7 +1,9 @@
 package com.example.artgram.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -16,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.artgram.R;
 
 import com.example.artgram.adapters.PhotosAdapter;
+import com.example.artgram.fragments.CollectionsFragment;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.ApiInterface;
 import com.example.artgram.services.UnsplashService;
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
