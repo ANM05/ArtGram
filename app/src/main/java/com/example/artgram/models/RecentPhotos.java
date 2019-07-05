@@ -23,15 +23,15 @@ public class RecentPhotos {
     @SerializedName("user")
     private User user=new User();
 
-    public RecentPhotos(String id, String createdAt, String updatedAt, String color, String description, PhotoUrl url, User user) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.color = color;
-        this.description = description;
-        this.url = url;
-        this.user = user;
-    }
+//    public RecentPhotos(String id, String createdAt, String updatedAt, String color, String description, PhotoUrl url, User user) {
+//        this.id = id;
+//        this.createdAt = createdAt;
+//        this.updatedAt = updatedAt;
+//        this.color = color;
+//        this.description = description;
+//        this.url = url;
+//        this.user = user;
+//    }
 
     public String getId() {
         return id;

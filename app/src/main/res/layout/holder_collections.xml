@@ -3,6 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+   <ImageView
+       android:id="@+id/collection_photo"
+       android:layout_width="match_parent"
+       android:layout_height="250dp"
+       android:scaleType="centerCrop"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="12dp">
 
+        <TextView
+            android:id="@+id/collection_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Beautifull Mountain"
+            android:layout_centerInParent="true"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/collection_total_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12 photos"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
 </FrameLayout>
