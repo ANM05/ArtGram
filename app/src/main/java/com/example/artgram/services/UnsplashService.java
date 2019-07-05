@@ -40,7 +40,7 @@ public class UnsplashService {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request request=chain.request().newBuilder()
-                            .addHeader("Authorization", "client_id"+Constants.UNSPLASH_KEY)
+                            .addHeader("Authorization", "Client-ID " + Constants.UNSPLASH_KEY)
                             .build();
 
                     return chain.proceed(request);

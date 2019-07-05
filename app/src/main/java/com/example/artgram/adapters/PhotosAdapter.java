@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,9 +26,9 @@ import butterknife.ButterKnife;
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder> {
 
     private Context mContext;
-    private ArrayList<RecentPhotos> mPhotos=new ArrayList<>();
+    private List<RecentPhotos> mPhotos=new ArrayList<>();
 
-    public PhotosAdapter(Context context, ArrayList<RecentPhotos> photos){
+    public PhotosAdapter(Context context, List<RecentPhotos> photos){
         this.mContext=context;
         this.mPhotos=photos;
     }
@@ -52,7 +53,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
 
     public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.imgMain) ImageView photo;
-        @BindView(R.id.photoCreatedAt) TextView title;
+        @BindView(R.id.photoCreatedAt) TextView createdAt;
 
         Context mContext;
 
@@ -65,8 +66,8 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
         }
 
         public void bindRecentPhotos(RecentPhotos recentPhotos){
-            Picasso.get().load(recentPhotos.getImageUrl()).into(photo);
-            title.setText(recentPhotos.getCreatedAt());
+            Picasso.get().load(recentPhotos.getUrl().getRegular()).into(photo);
+            createdAt.setText(recentPhotos.getCreatedAt());
         }
 
         @Override
