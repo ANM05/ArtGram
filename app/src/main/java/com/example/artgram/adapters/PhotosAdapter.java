@@ -53,7 +53,6 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
 
     public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.imgMain) ImageView photo;
-        @BindView(R.id.photoCreatedAt) TextView createdAt;
 
         Context mContext;
 
@@ -67,7 +66,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
 
         public void bindRecentPhotos(RecentPhotos recentPhotos){
             Picasso.get().load(recentPhotos.getUrl().getRegular()).into(photo);
-            createdAt.setText(recentPhotos.getCreatedAt());
+
         }
 
         @Override

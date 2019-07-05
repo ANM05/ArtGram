@@ -19,24 +19,9 @@
         <ImageView
             android:id="@+id/imgMain"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/img2" />
-        <!--<ProgressBar-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:id="@+id/progressBar"/>-->
-
-
-        <TextView
-            android:id="@+id/photoCreatedAt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            android:paddingBottom="3dp"
-            android:text="Here is the photo title" />
-
+            android:layout_height="match_parent"
+            android:src="@drawable/img2"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
