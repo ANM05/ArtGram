@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.artgram.R;
+import com.example.artgram.adapters.PhotosPagerAdapter;
 import com.example.artgram.models.RecentPhotos;
+//import com.example.artgram.adapters.
 
 import org.parceler.Parcels;
 
@@ -25,7 +27,7 @@ import butterknife.ButterKnife;
 public class DetailsActivity extends AppCompatActivity {
     @BindView(R.id.viewPager)
     ViewPager mViewPager;
-//    private PhotosPagerAdapter pagerAdapter;
+    private PhotosPagerAdapter pagerAdapter;
     ArrayList<RecentPhotos> mRecentPhotos=new ArrayList<>();
 
     @Override
@@ -34,11 +36,11 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
 
-//        mRecentPhotos= Parcels.unwrap(getIntent().getParcelableExtra("photos"));
-//        int startingPosition = getIntent().getIntExtra("position", 0);
+        mRecentPhotos= Parcels.unwrap(getIntent().getParcelableExtra("photos"));
+        int startingPosition = getIntent().getIntExtra("position", 0);
 
-//        pagerAdapter=new PhotosPagerAdapter(getSupportFragmentManager(), mRecentPhotos);
-//        mViewPager.setAdapter(pagerAdapter);
-//        mViewPager.setCurrentItem(startingPosition);
+        pagerAdapter=new PhotosPagerAdapter(getSupportFragmentManager(), mRecentPhotos);
+        mViewPager.setAdapter(pagerAdapter);
+        mViewPager.setCurrentItem(startingPosition);
     }
 }

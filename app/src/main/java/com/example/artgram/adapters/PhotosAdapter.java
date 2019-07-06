@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artgram.R;
 import com.example.artgram.models.RecentPhotos;
+import com.example.artgram.ui.DetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -71,11 +72,11 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosView
 
         @Override
         public void onClick(View v) {
-//            int itemPosition = getLayoutPosition();
-//            Intent intent = new Intent(mContext, DetailsActivity.class);
-//            intent.putExtra("position", itemPosition);
-//            intent.putExtra("photos", Parcels.wrap(mPhotos));
-//            mContext.startActivity(intent);
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, DetailsActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("photos", Parcels.wrap(mPhotos));
+            mContext.startActivity(intent);
         }
     }
 

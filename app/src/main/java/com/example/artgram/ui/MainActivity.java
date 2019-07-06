@@ -130,7 +130,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_collections:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CollectionsFragment()).commit();
                 break;
+
+            case R.id.nav_explore:
+//                getSupportParentActivityIntent()
+                break;
         }
+
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
