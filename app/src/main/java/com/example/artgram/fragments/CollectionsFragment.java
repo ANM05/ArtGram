@@ -19,12 +19,14 @@ import com.example.artgram.adapters.CollectionsAdapter;
 import com.example.artgram.models.Collection;
 import com.example.artgram.services.ApiInterface;
 import com.example.artgram.services.UnsplashService;
+import com.example.artgram.utils.Functions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,6 +118,18 @@ public class CollectionsFragment extends Fragment {
         }
 
     }
+
+    @OnItemClick(R.id.collections_gridView)
+    public void onItemClick(int position){
+        Collection collection = collectionList.get(position);
+        Log.d(TAG, collection.getId() + "");
+        Bundle bundle = new Bundle();
+        bundle.putInt("collectionId", collection.getId());
+        CollectionViewFragment collectionViewFragment = new CollectionViewFragment();
+        collectionViewFragment.setArguments(bundle);
+        Functions.changeMainFragmentWithBack(getActivity(), collectionViewFragment);
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
