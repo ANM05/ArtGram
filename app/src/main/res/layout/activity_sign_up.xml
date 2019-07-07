@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:background="@color/back_color"
             style="@style/TextInputLayoutStyle"
             android:hint="Full Names"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,7 @@
                 android:id="@+id/name"
                 android:text="John Doe"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,6 +50,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="20dp"
+            android:background="@color/back_color"
             style="@style/TextInputLayoutStyle"
             android:hint="Email"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +74,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
             android:hint="Password"
+            android:background="@color/back_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:passwordToggleEnabled="true"
@@ -94,6 +97,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
             android:hint="Confirm Password"
+            android:background="@color/back_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:passwordToggleEnabled="true"
@@ -114,18 +118,16 @@
             app:indicatorName="BallTrianglePathIndicator"
             />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/sign_up"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            app:strokeColor="@android:color/white"
-            android:layout_marginTop="20dp"
-            app:strokeWidth="2dp"
-            android:textColor="#fff"
-            android:layout_marginEnd="64dp"
-            android:text="sign up"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_login"
+            android:text="@string/button"
+            android:textAlignment="center"
+            android:textColor="@color/back_color"/>
 
     </LinearLayout>
 
@@ -138,7 +140,7 @@
         android:layout_marginBottom="63dp"
         android:text="Join Us"
         android:textSize="42sp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/themeColour"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

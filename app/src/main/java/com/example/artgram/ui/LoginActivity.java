@@ -7,6 +7,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText mPassword;
     @BindView(R.id.btn_login)
     Button mBtnLogin;
+    @BindView(R.id.registerTextView)
+    TextView mRegisterTextView;
 
     private static final Pattern PASSWORD_PATTERN = Pattern
             .compile("^" +
@@ -45,7 +48,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
 
         mBtnLogin.setOnClickListener(this);
+        mRegisterTextView.setOnClickListener(this);
         Intent intent=getIntent();
+
+
 
 //        confirmInput(View v);
     }
@@ -100,6 +106,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intent=new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("email", email);
             startActivity(intent);
+        }
+        if(view == mRegisterTextView){
+            Intent intent=new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 

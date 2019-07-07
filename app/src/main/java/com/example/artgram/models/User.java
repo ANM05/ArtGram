@@ -17,7 +17,7 @@ public class User {
     @SerializedName("total_photos")
     protected int totalPhotos;
     @SerializedName("profile_image")
-    private ProfileImage profileImage = new ProfileImage();
+    protected ProfileImage profileImage = new ProfileImage();
 
     public User(){}
 
