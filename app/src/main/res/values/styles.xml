@@ -12,4 +12,11 @@
         <!-- Customize your theme here. -->
         <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#fff</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextAppearance">#fff</item>
+    </style>
+
 </resources>
