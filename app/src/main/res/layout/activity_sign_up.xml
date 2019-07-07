@@ -125,7 +125,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:background="@drawable/btn_login"
-            android:text="@string/button"
+            android:text="@string/signup"
             android:textAlignment="center"
             android:textColor="@color/back_color"/>
 
