@@ -2,13 +2,18 @@ package com.example.artgram.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class ProfileImage {
     @SerializedName("small")
-    private String small;
+    protected String small;
     @SerializedName("medium")
-    private String medium;
+    protected String medium;
     @SerializedName("large")
-    private String large;
+    protected String large;
+
+    public ProfileImage(){}
 
     public String getSmall() {
         return small;

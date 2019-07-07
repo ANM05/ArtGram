@@ -2,19 +2,24 @@ package com.example.artgram.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class User {
     @SerializedName("id")
-    private String id;
+    protected String id;
     @SerializedName("username")
-    private String username;
+    protected String username;
     @SerializedName("bio")
-    private String bio;
+    protected String bio;
     @SerializedName("total_likes")
-    private int totalLikes;
+    protected int totalLikes;
     @SerializedName("total_photos")
-    private int totalPhotos;
+    protected int totalPhotos;
     @SerializedName("profile_image")
     private ProfileImage profileImage = new ProfileImage();
+
+    public User(){}
 
     public String getId() {
         return id;

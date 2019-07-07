@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.example.artgram.R;
 import com.example.artgram.models.RecentPhotos;
-import com.example.artgram.utils.GlideApp;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -60,10 +59,11 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_photo_detail, container, false);
         ButterKnife.bind(this, view);
-        GlideApp
-                .with(context)
-                .load(mRecentPhotos.getUrl().getRegular())
-                .into(mphotoImageView);
+        Picasso.get().load(mRecentPhotos.getUrl().getRegular()).into(mphotoImageView);
+//        GlideApp
+//                .with(context)
+//                .load(mRecentPhotos.getUrl().getRegular())
+//                .into(mphotoImageView);
         mPhotoDescription.setText(mRecentPhotos.getDescription());
 
         return view;

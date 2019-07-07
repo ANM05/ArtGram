@@ -2,13 +2,18 @@ package com.example.artgram.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class PhotoUrl {
     @SerializedName("raw")
-    private String raw;
+    protected String raw;
     @SerializedName("full")
-    private String full;
+    protected String full;
     @SerializedName("regular")
-    private String regular;
+    protected String regular;
+
+    public PhotoUrl(){}
 
     public String getRaw() {
         return raw;

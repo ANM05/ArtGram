@@ -20,7 +20,7 @@ import com.example.artgram.models.Collection;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.ApiInterface;
 import com.example.artgram.services.UnsplashService;
-import com.example.artgram.utils.GlideApp;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,10 +84,10 @@ public class CollectionViewFragment extends Fragment {
                     title.setText(collection.getTitle());
                     description.setText(collection.getDescription());
                     username.setText(collection.getUser().getUsername());
-                    GlideApp
-                            .with(getActivity())
-                            .load(collection.getUser().getProfileImage().getSmall())
-                            .into(userAvatar);
+                    Picasso.get().load(collection.getUser().getProfileImage().getSmall()).into(userAvatar);
+//                            .with(getActivity())
+//                            .load(collection.getUser().getProfileImage().getSmall())
+//                            .into(userAvatar);
 
                 }else{
                     Log.d(TAG, "Fail" + response.message());

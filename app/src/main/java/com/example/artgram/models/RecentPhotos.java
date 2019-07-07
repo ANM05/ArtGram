@@ -2,36 +2,40 @@ package com.example.artgram.models;
 
 import com.google.gson.annotations.SerializedName;
 
-//import org.parceler.Parcel;
-//
-//@Parcel
+import org.parceler.Parcel;
+
+@Parcel
 
 public class RecentPhotos {
 
     @SerializedName("id")
-    private String id;
+    protected String id;
     @SerializedName("created_at")
-    private String createdAt;
+    protected String createdAt;
     @SerializedName("updated_at")
-    private String updatedAt;
+    protected String updatedAt;
     @SerializedName("color")
-    private String color;
+    protected String color;
     @SerializedName("description")
-    private String description;
+    protected String description;
     @SerializedName("urls")
-    private PhotoUrl url=new PhotoUrl();
+    protected PhotoUrl url=new PhotoUrl();
     @SerializedName("user")
-    private User user=new User();
+    protected User user=new User();
 
-//    public RecentPhotos(String id, String createdAt, String updatedAt, String color, String description, PhotoUrl url, User user) {
-//        this.id = id;
-//        this.createdAt = createdAt;
-//        this.updatedAt = updatedAt;
-//        this.color = color;
-//        this.description = description;
-//        this.url = url;
-//        this.user = user;
-//    }
+    public RecentPhotos(){
+
+    }
+
+    public RecentPhotos(String id, String createdAt, String updatedAt, String color, String description, PhotoUrl url, User user) {
+        this.id = id;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.color = color;
+        this.description = description;
+        this.url = url;
+        this.user = user;
+    }
 
     public String getId() {
         return id;

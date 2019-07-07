@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.example.artgram.R;
 import com.example.artgram.models.Collection;
-import com.example.artgram.utils.GlideApp;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -65,10 +66,7 @@ public class CollectionsAdapter extends BaseAdapter {
 
         }
         holder.totalPhotos.setText(String.valueOf(collection.getTotalPhotos()) + " photos");
-        GlideApp
-                .with(context)
-                .load(collection.getCoverPhoto().getUrl().getRegular())
-                .into(holder.collectionPhoto);
+        Picasso.get().load(collection.getCoverPhoto().getUrl().getRegular()).into(holder.collectionPhoto);
         return view;
 
     }
