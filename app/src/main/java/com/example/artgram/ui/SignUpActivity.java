@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
@@ -49,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
 
         loadingIndicatorView.hide();
+        mAuth = FirebaseAuth.getInstance();
 
         signUp.setOnClickListener(this);
     }
@@ -67,35 +70,60 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String passWord = password.getText().toString().trim();
         String confirmPassword = confirm_password.getText().toString().trim();
 
+        if (TextUtils.isEmpty(name)) {
+            confirm_password.setError("Please enter Name");
+            return;
+        }
+        if (TextUtils.isEmpty(emailInput)) {
+            confirm_password.setError("Password enter email address");
+            return;
+        }
+        if (TextUtils.isEmpty(passWord)) {
+            confirm_password.setError("Please enter password");
+            return;
+        }
+        if (!(confirmPassword.equals(passWord))) {
+            confirm_password.setError("Password doesn't match");
+            return;
+        }
+
         mAuth.createUserWithEmailAndPassword(emailInput, passWord)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful");
+                            loadingIndicatorView.hide();
+                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                            //avoids using the back btn to go back to the signup activity after successful login
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            setDisplayName(task.getResult().getUser());
+                            startActivity(intent);
                         } else {
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            loadingIndicatorView.hide();
+                            Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            signUp.setEnabled(true);
                         }
                     }
                 });
-
-//        private void createAuthStateListener () {
-//            mAuthListener = new FirebaseAuth.AuthStateListener() {
-//
-//                @Override
-//                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                    final FirebaseUser user = firebaseAuth.getCurrentUser();
-//                    if (user != null) {
-//                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                        startActivity(intent);
-//                        finish();
-//                    }
-//                }
-//
-//            };
-//        }
     }
-}
+
+        public void setDisplayName ( final FirebaseUser firebaseUser)
+        {
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(names.getText().toString().trim())
+                    .build();
+            firebaseUser.updateProfile(profileUpdates)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "User profile updated.");
+                            }
+                        }
+                    });
+
+        }
+    }
+
 
