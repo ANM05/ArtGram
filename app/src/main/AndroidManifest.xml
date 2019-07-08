@@ -12,21 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SignUpActivity"
-            android:theme="@style/SplashTheme">
-
+        <activity android:name=".ui.SearchActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.artgram.ui.MainActivity" />
         </activity>
+        <activity
+            android:name=".ui.SignUpActivity"
+            android:theme="@style/SplashTheme"></activity>
         <activity android:name=".ui.DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.artgram.ui.MainActivity"></meta-data>
+                android:value="com.example.artgram.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/SplashTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.artgram.ui.LoginActivity"></meta-data>
+                android:value="com.example.artgram.ui.LoginActivity" />
         </activity>
         <activity
             android:name=".ui.LoginActivity"

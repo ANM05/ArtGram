@@ -1,5 +1,6 @@
 package com.example.artgram.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import com.example.artgram.fragments.CollectionsFragment;
 import com.example.artgram.models.RecentPhotos;
 import com.example.artgram.services.ApiInterface;
 import com.example.artgram.services.UnsplashService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.mainRecycler)
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.main_progressBar)
     ProgressBar progressBar;
     @BindView(R.id.nav_view) NavigationView navigationView;
+    @BindView(R.id.btn_search)
+    FloatingActionButton btnSearch;
 
     private List<RecentPhotos> mPhotos = new ArrayList<>();
     private PhotosAdapter mAdapter;
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        btnSearch.setOnClickListener(this);
 
         showProgressBar(true);
         getPhotos();
@@ -139,6 +145,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v==btnSearch){
+            Intent intent=new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+        }
     }
 }
 
