@@ -7,12 +7,19 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.artgram.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
@@ -22,13 +29,19 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.email)
-    EditText mLoginEmail;
+    EditText email;
     @BindView(R.id.password)
-    EditText mPassword;
+    EditText password;
     @BindView(R.id.btn_login)
-    Button mBtnLogin;
+    Button login;
     @BindView(R.id.registerTextView)
     TextView mRegisterTextView;
+    @BindView(R.id.login_progressbar)
+    ProgressBar logProgressBar;
+    @BindView(R.id.linearLayout)
+    LinearLayout linearLayout;
+
+    private FirebaseAuth mAuth;
 
     private static final Pattern PASSWORD_PATTERN = Pattern
             .compile("^" +
@@ -47,42 +60,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        mBtnLogin.setOnClickListener(this);
+        login.setOnClickListener(this);
         mRegisterTextView.setOnClickListener(this);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
 
-
+        showProgressBar(true);
+        mAuth = FirebaseAuth.getInstance();
 //        confirmInput(View v);
     }
 
     private boolean validateEmail() {
-        String emailInput = mLoginEmail.getText().toString().trim();
+        String emailInput = email.getText().toString().trim();
 
         if (emailInput.isEmpty()) {
-            mLoginEmail.setError("Field can't be empty.");
+            email.setError("Field can't be empty.");
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-            mLoginEmail.setError("Please enter a valid email address.");
+            email.setError("Please enter a valid email address.");
             return false;
         } else {
-            mLoginEmail.setError(null);
+            email.setError(null);
             return true;
         }
     }
 
-    private boolean validatePassword(){
-        String passwordInput=mPassword.getText().toString().trim();
+    private boolean validatePassword() {
+        String passwordInput = password.getText().toString().trim();
 
-        if(passwordInput.isEmpty()){
-            mPassword.setError("Field can't be empty");
+        if (passwordInput.isEmpty()) {
+            password.setError("Field can't be empty");
             return false;
-        }else if(!PASSWORD_PATTERN.matcher(passwordInput).matches()){
-            mPassword.setError("Password too weak");
+        } else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
+            password.setError("Password too weak");
             return false;
-        }
-        else{
-            mPassword.setError(null);
+        } else {
+            password.setError(null);
             return true;
         }
     }
@@ -92,26 +105,73 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        String input = "Email: " + mLoginEmail.getText().toString();
+        String input = "Email: " + email.getText().toString();
         input += "\n";
-        input += "Password: " + mPassword.getText().toString();
+        input += "Password: " + password.getText().toString();
 
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onClick(View view){
-        if(view==mBtnLogin){
-            String email=mLoginEmail.getText().toString();
-            Intent intent=new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("email", email);
-            startActivity(intent);
+    public void onClick(View view) {
+        if (view == login) {
+            if (isValid()) {
+                login.setEnabled(false);
+                mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra("email", email.getText().toString());
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+//                                    finish();
+                                } else {
+                                    login.setEnabled(true);
+                                    Toast.makeText(LoginActivity.this, task.getException().getMessage().toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+
+
         }
-        if(view == mRegisterTextView){
-            Intent intent=new Intent(LoginActivity.this, SignUpActivity.class);
+        if (view == mRegisterTextView) {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
             finish();
         }
     }
+
+    private boolean isValid() {
+        boolean valid = false;
+
+
+        if (password.getText().toString().trim().isEmpty()) {
+            password.setError("Please enter password");
+        } else if (email.getText().toString().trim().isEmpty()) {
+            email.setError("Please enter your email");
+        } else if (!(Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches())) {
+            email.setError("Email address not valid");
+        } else {
+            valid = true;
+        }
+
+
+        return valid;
+    }
+
+    private void showProgressBar(boolean isShow) {
+        if (isShow) {
+            logProgressBar.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.GONE);
+        } else {
+            logProgressBar.setVisibility(View.GONE);
+            linearLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
 
 }
