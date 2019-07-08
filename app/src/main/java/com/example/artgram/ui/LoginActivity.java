@@ -36,10 +36,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button login;
     @BindView(R.id.registerTextView)
     TextView mRegisterTextView;
-    @BindView(R.id.login_progressbar)
-    ProgressBar logProgressBar;
-    @BindView(R.id.linearLayout)
-    LinearLayout linearLayout;
+//    @BindView(R.id.login_progressbar)
+//    ProgressBar logProgressBar;
 
     private FirebaseAuth mAuth;
 
@@ -65,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = getIntent();
 
 
-        showProgressBar(true);
+//        showProgressBar(true);
         mAuth = FirebaseAuth.getInstance();
 //        confirmInput(View v);
     }
@@ -163,15 +161,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return valid;
     }
 
-    private void showProgressBar(boolean isShow) {
-        if (isShow) {
-            logProgressBar.setVisibility(View.VISIBLE);
-            linearLayout.setVisibility(View.GONE);
-        } else {
-            logProgressBar.setVisibility(View.GONE);
-            linearLayout.setVisibility(View.VISIBLE);
-        }
-    }
+//    private void showProgressBar(boolean isShow) {
+//        if (isShow) {
+//            logProgressBar.setVisibility(View.VISIBLE);
+//            login.setVisibility(View.GONE);
+//        } else {
+//            logProgressBar.setVisibility(View.GONE);
+//            login.setVisibility(View.VISIBLE);
+//        }
+//    }
 
 
 }
