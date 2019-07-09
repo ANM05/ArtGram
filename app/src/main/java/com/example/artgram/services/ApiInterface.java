@@ -22,4 +22,6 @@ public interface ApiInterface {
     @GET("collections/{id}/photos")
     Call<List<RecentPhotos>> getPhotosOfCollection(@Path("id") int id);
 
+    @GET("search/photos?&query={query}")
+    Call<List<RecentPhotos>> getSearchedPhotos(@Path("query") String query);
 }
