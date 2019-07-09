@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
 
     @BindView(R.id.searchView_recycler)
     RecyclerView mRecycler;
-    @BindView(R.id.main_progressBar)
+    @BindView(R.id.search_progressBar)
     ProgressBar progressBar;
 
     @Override

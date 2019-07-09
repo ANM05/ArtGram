@@ -8,6 +8,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("photos")
@@ -22,6 +23,6 @@ public interface ApiInterface {
     @GET("collections/{id}/photos")
     Call<List<RecentPhotos>> getPhotosOfCollection(@Path("id") int id);
 
-    @GET("search/photos?&query={query}")
-    Call<List<RecentPhotos>> getSearchedPhotos(@Path("query") String query);
+    @GET("search/photos")
+    Call<List<RecentPhotos>> getSearchedPhotos(@Query("query") String query);
 }
