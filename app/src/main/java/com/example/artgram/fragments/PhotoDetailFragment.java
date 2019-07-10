@@ -74,7 +74,6 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
         mPhotoDescription.setText(mRecentPhotos.getDescription());
         portUrl.setText(mRecentPhotos.getUser().getPortfolioUrl());
 
-
         //        GlideApp
 //                .with(context)
 //                .load(mRecentPhotos.getUrl().getRegular())
@@ -95,7 +94,7 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 
-        if(v==portUrl){
+        if (v == portUrl) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mRecentPhotos.getUser().getPortfolioUrl()));
             startActivity(webIntent);
