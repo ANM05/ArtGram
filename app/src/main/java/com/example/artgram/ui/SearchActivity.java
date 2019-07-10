@@ -38,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
-    private String mQuery;
+    private String mQuery="art";
     private List<RecentPhotos> mPhotos = new ArrayList<>();
     private SearchAdapter mAdapter;
 
@@ -57,7 +57,7 @@ public class SearchActivity extends AppCompatActivity {
         getSearchedPhotos(mQuery);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mQuery = mSharedPreferences.getString(Constants.QUERY, null);
+        mQuery = mSharedPreferences.getString(Constants.QUERY, "art");
 
         if (mQuery != null) {
             getSearchedPhotos(mQuery);

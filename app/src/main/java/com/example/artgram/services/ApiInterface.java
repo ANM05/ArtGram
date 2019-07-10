@@ -23,6 +23,6 @@ public interface ApiInterface {
     @GET("collections/{id}/photos")
     Call<List<RecentPhotos>> getPhotosOfCollection(@Path("id") int id);
 
-    @GET("search/photos")
+    @GET("search/photos?")
     Call<List<RecentPhotos>> getSearchedPhotos(@Query("query") String query);
 }
