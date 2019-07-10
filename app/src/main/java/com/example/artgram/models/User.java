@@ -18,6 +18,8 @@ public class User {
     protected int totalPhotos;
     @SerializedName("profile_image")
     protected ProfileImage profileImage = new ProfileImage();
+    @SerializedName("portfolio_url")
+    protected String portfolioUrl;
 
     public User(){}
 
@@ -43,5 +45,9 @@ public class User {
 
     public ProfileImage getProfileImage() {
         return profileImage;
+    }
+
+    public String getPortfolioUrl(){
+        return portfolioUrl;
     }
 }

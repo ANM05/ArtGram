@@ -54,7 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         showProgressBar(true);
-//        getSearchedPhotos();
+        getSearchedPhotos(mQuery);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mQuery = mSharedPreferences.getString(Constants.QUERY, null);

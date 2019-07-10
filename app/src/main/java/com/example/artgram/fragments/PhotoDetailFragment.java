@@ -2,6 +2,8 @@ package com.example.artgram.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,14 +32,18 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PhotoDetailFragment extends Fragment implements View.OnClickListener{
+public class PhotoDetailFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.descriptionImageView)
     ImageView mphotoImageView;
     @BindView(R.id.photoDescription)
     TextView mPhotoDescription;
+    @BindView(R.id.detail_fragment_username)
+    TextView mUsername;
     @BindView(R.id.btn_fav)
     FloatingActionButton favouriteBtn;
+    @BindView(R.id.port_url)
+    TextView portUrl;
 
     private RecentPhotos mRecentPhotos;
     private Context context;
@@ -46,9 +52,9 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
         // Required empty public constructor
     }
 
-    public static PhotoDetailFragment newInstance(RecentPhotos recentPhotos){
-        PhotoDetailFragment detailFragment=new PhotoDetailFragment();
-        Bundle args=new Bundle();
+    public static PhotoDetailFragment newInstance(RecentPhotos recentPhotos) {
+        PhotoDetailFragment detailFragment = new PhotoDetailFragment();
+        Bundle args = new Bundle();
         args.putParcelable("recentPhotos", Parcels.wrap(recentPhotos));
         detailFragment.setArguments(args);
         return detailFragment;
@@ -67,20 +73,24 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_photo_detail, container, false);
         ButterKnife.bind(this, view);
         Picasso.get().load(mRecentPhotos.getUrl().getRegular()).into(mphotoImageView);
+        mUsername.setText(mRecentPhotos.getUser().getUsername());
         mPhotoDescription.setText(mRecentPhotos.getDescription());
+        portUrl.setText(mRecentPhotos.getUser().getPortfolioUrl());
+
 
         //        GlideApp
 //                .with(context)
 //                .load(mRecentPhotos.getUrl().getRegular())
 //                .into(mphotoImageView);
         favouriteBtn.setOnClickListener(this);
+        portUrl.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if(v==favouriteBtn){
+        if (v == favouriteBtn) {
             DatabaseReference photosRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_PHOTOGRAPHS);
@@ -88,5 +98,10 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 
+        if(v==portUrl){
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mRecentPhotos.getUser().getPortfolioUrl()));
+            startActivity(webIntent);
+        }
     }
 }
