@@ -38,8 +38,6 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
     ImageView mphotoImageView;
     @BindView(R.id.photoDescription)
     TextView mPhotoDescription;
-    @BindView(R.id.detail_fragment_username)
-    TextView mUsername;
     @BindView(R.id.btn_fav)
     FloatingActionButton favouriteBtn;
     @BindView(R.id.port_url)
@@ -73,7 +71,6 @@ public class PhotoDetailFragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_photo_detail, container, false);
         ButterKnife.bind(this, view);
         Picasso.get().load(mRecentPhotos.getUrl().getRegular()).into(mphotoImageView);
-        mUsername.setText(mRecentPhotos.getUser().getUsername());
         mPhotoDescription.setText(mRecentPhotos.getDescription());
         portUrl.setText(mRecentPhotos.getUser().getPortfolioUrl());
 

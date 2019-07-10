@@ -29,12 +29,6 @@
                 android:src="@drawable/img1" />
 
             <TextView
-                android:id="@+id/detail_fragment_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/photoDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +58,9 @@
         android:id="@+id/btn_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
+        android:clickable="true"
         android:src="@drawable/ic_favorite_white_24dp"
         app:backgroundTint="@color/themeColour" />
 
